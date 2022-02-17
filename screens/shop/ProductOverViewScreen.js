@@ -4,20 +4,26 @@ import {useSelector} from 'react-redux'
 
 const ProductOverViewScreen = (props) => {
 
-    const products = useSelector(state => state.products.userProducts);
+    const products = useSelector(state => state.products.availableProducts);
+
+    const renderItem = ({item}) => {
+        return <Text>{item.title}</Text>
+    }   
 
     return (
         <View style={styles.screen}>
-
+            <FlatList
+                data={products}
+                renderItem={renderItem}
+                keyExtractor={item=>item.pid}
+            />
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     screen: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+        flex: 1
     }
 });
 

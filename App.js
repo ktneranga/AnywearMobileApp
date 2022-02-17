@@ -5,6 +5,7 @@ import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 
 import productReducer from './store/reducers/products'
+import ShopNavigator from './navigation/ShopNavigator';
 
 import ProductOverViewScreen from './screens/shop/ProductOverViewScreen';
 
@@ -18,7 +19,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
-        <ProductOverViewScreen/>
+        <ShopNavigator/>
     </Provider>
 
   );
