@@ -21,6 +21,9 @@ const ShopNavigator = (props) => {
                         headerStyle: {
                             backgroundColor: Platform.OS === 'android' ? Colors.primary : ''
                         },
+                        headerTitleStyle: {
+                            fontFamily: 'open-sans-bold'
+                        },
                         headerTintColor: Platform.OS === 'android' ? '#fff' : Colors.primary
                      }}
                 />
@@ -30,6 +33,9 @@ const ShopNavigator = (props) => {
                     options={{ 
                         headerStyle: {
                             backgroundColor: Platform.OS === 'android' ? Colors.primary : ''
+                        },
+                        headerTitleStyle: {
+                            fontFamily: 'open-sans-bold'
                         },
                         headerTintColor: Platform.OS === 'android' ? '#fff' : Colors.primary,
                      }}
