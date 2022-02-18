@@ -1,9 +1,12 @@
 import React,{useEffect} from 'react';
 import {Text, View, StyleSheet, Button, ScrollView, Image} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import Colors from '../../constants/Colors';
+import * as cartActions from '../../store/actions/cart';
 
 const ProductDetailsScreen = (props) => {
+
+    const dispatch = useDispatch();
 
     const productId = props.route.params.productId;
     const product = useSelector(state=>state.products.availableProducts.find(product=>product.pid === productId));
@@ -20,7 +23,7 @@ const ProductDetailsScreen = (props) => {
             <View style={styles.action}>
                 <Button
                     title='Add to Cart'
-                    onPress={()=>{}}
+                    onPress={()=>{dispatch(cartActions.addToCart(product))}}
                     color={Colors.primary}
                 />
             </View>
