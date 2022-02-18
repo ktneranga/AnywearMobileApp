@@ -16,7 +16,7 @@ const ShopNavigator = (props) => {
                     name="ProductOverViewScreen"
                     component = {ProductOverViewScreen}
                     options={{ 
-                        title: 'Home',
+                        title: 'All Products',
                         headerStyle: {
                             backgroundColor: Platform.OS === 'android' ? Colors.primary : ''
                         },
