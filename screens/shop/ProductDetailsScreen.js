@@ -42,12 +42,14 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#888',
         textAlign: 'center',
-        marginVertical: 20
+        marginVertical: 20,
+        fontFamily: 'open-sans-regular'
     },
     description: {
         fontSize: 14,
         textAlign: 'center',
-        padding: 20
+        padding: 20,
+        fontFamily: 'open-sans-regular'
     },
     action: {
         alignItems: 'center',
