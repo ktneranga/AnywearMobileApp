@@ -1,8 +1,9 @@
 import React from "react";
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {View, Text, StyleSheet, Button, FlatList} from 'react-native';
 import Card from "../../components/shop/UI/Card";
 import { useSelector } from "react-redux"; 
 import Colors from '../../constants/Colors';
+import CartItem from "../../components/shop/CartItem";
 
 const CartScreen = () => {
 
@@ -26,17 +27,32 @@ const CartScreen = () => {
 
     console.log(cartItemArray);
 
+    const renderItem = (itemData) => {
+        return(
+            <CartItem
+                qty={itemData.item.quantity}
+                title={itemData.item.productTitle}
+                amount={itemData.item.productPrice}
+                onRemove={()=>{}}
+            />
+        )
+    }
+
     return(
         <View style={styles.screen}>
             <Card
             >
                 <View style={styles.summary}>
                     <Text style={styles.summaryText}>Total: <Text style={styles.summaryTotal}>$ {totalAmount.toFixed(2)}</Text></Text>
-                    <Button title='Order Now' disabled color={Colors.accent}/>
+                    <Button title='Order Now' disabled={cartItemArray === 0} color={Colors.accent}/>
                 </View>
             </Card>
             <View style={styles.cartItems}>
-                <Text>Cart Items</Text>
+                <FlatList
+                keyExtractor={(item,data)=>item.id}
+                    data={cartItemArray}
+                    renderItem={renderItem}
+                />
             </View>
         </View>
     );
