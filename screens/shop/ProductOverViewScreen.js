@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import {View,Text,FlatList, StyleSheet} from 'react-native'
 import {useSelector, useDispatch} from 'react-redux'
 import ProductItem from '../../components/shop/ProductItem';
 import * as cartActions from '../../store/actions/cart'
+
+import { HeaderButtons, Item} from 'react-navigation-header-buttons';
+import CustomHeaderButton from '../../components/shop/UI/HeaderButton';
 
 const ProductOverViewScreen = (props) => {
 
@@ -22,7 +25,24 @@ const ProductOverViewScreen = (props) => {
                 onAddToCart={()=>{dispatch(cartActions.addToCart(itemData.item))}}
             />
         )
-    }   
+    }  
+    
+    useLayoutEffect(()=>{
+        props.navigation.setOptions({
+            headerTitle: 'All Products',
+            headerRight: ()=>(
+                <HeaderButtons
+                    HeaderButtonComponent={CustomHeaderButton}
+                >
+                    <Item
+                        title='cart'
+                        iconName='ios-cart'
+                        onPress={()=>{props.navigation.navigate('CartScreen')}}
+                    />
+                </HeaderButtons>
+            )
+        });
+    },[props.navigation]);
 
     return (
         <View style={styles.screen}>
