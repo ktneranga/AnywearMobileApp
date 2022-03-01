@@ -6,18 +6,18 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Colors from '../constants/Colors';
 import ProductOverViewScreen from '../screens/shop/ProductOverViewScreen';
 import ProductDetailsScreen from '../screens/shop/ProductDetailsScreen';
+import CartScreen from '../screens/shop/CartScreen';
 
 const Stack = createStackNavigator();
 
-const ShopNavigator = (props) => {
-    return(
+const ShopNavigator = ({navigation}) => {
+    return( 
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen
                     name="ProductOverViewScreen"
                     component = {ProductOverViewScreen}
                     options={{ 
-                        title: 'All Products',
                         headerStyle: {
                             backgroundColor: Platform.OS === 'android' ? Colors.primary : ''
                         },
@@ -31,6 +31,20 @@ const ShopNavigator = (props) => {
                     name='ProductDetailsScreen'
                     component={ProductDetailsScreen}
                     options={{ 
+                        headerStyle: {
+                            backgroundColor: Platform.OS === 'android' ? Colors.primary : ''
+                        },
+                        headerTitleStyle: {
+                            fontFamily: 'open-sans-bold'
+                        },
+                        headerTintColor: Platform.OS === 'android' ? '#fff' : Colors.primary,
+                     }}
+                />
+                <Stack.Screen
+                    name='CartScreen'
+                    component={CartScreen}
+                    options={{ 
+                        title: 'Cart',
                         headerStyle: {
                             backgroundColor: Platform.OS === 'android' ? Colors.primary : ''
                         },
