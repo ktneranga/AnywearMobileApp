@@ -44,7 +44,7 @@ const CartScreen = () => {
             >
                 <View style={styles.summary}>
                     <Text style={styles.summaryText}>Total: <Text style={styles.summaryTotal}>$ {totalAmount.toFixed(2)}</Text></Text>
-                    <Button title='Order Now' disabled={cartItemArray === 0} color={Colors.accent}/>
+                    <Button title='Order Now' disabled={cartItemArray.length === 0} color={Colors.accent}/>
                 </View>
             </Card>
             <View style={styles.cartItems}>
