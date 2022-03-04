@@ -1,11 +1,14 @@
 import React from "react";
 import {View, Text, StyleSheet, Button, FlatList} from 'react-native';
 import Card from "../../components/shop/UI/Card";
-import { useSelector } from "react-redux"; 
+import { useSelector, useDispatch } from "react-redux"; 
 import Colors from '../../constants/Colors';
 import CartItem from "../../components/shop/CartItem";
+import * as cartActions from '../../store/actions/cart'
 
 const CartScreen = () => {
+
+    const dispatch = useDispatch();
 
     const totalAmount = useSelector(state=>state.cart.totalAmount);
     const cartItems = useSelector(state=>state.cart.items);
@@ -32,16 +35,15 @@ const CartScreen = () => {
             <CartItem
                 qty={itemData.item.quantity}
                 title={itemData.item.productTitle}
-                amount={itemData.item.productPrice}
-                onRemove={()=>{}}
+                amount={itemData.item.sum}
+                onRemove={()=>{dispatch(cartActions.removeFromCart(itemData.item.pid))}}
             />
         )
     }
 
     return(
         <View style={styles.screen}>
-            <Card
-            >
+            <Card>
                 <View style={styles.summary}>
                     <Text style={styles.summaryText}>Total: <Text style={styles.summaryTotal}>$ {totalAmount.toFixed(2)}</Text></Text>
                     <Button title='Order Now' disabled={cartItemArray.length === 0} color={Colors.accent}/>
@@ -49,7 +51,7 @@ const CartScreen = () => {
             </Card>
             <View style={styles.cartItems}>
                 <FlatList
-                keyExtractor={(item,data)=>item.id}
+                    keyExtractor={(item)=>item.pid}
                     data={cartItemArray}
                     renderItem={renderItem}
                 />
