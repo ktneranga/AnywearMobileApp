@@ -4,7 +4,8 @@ import Card from "../../components/shop/UI/Card";
 import { useSelector, useDispatch } from "react-redux"; 
 import Colors from '../../constants/Colors';
 import CartItem from "../../components/shop/CartItem";
-import * as cartActions from '../../store/actions/cart'
+import * as cartActions from '../../store/actions/cart';
+import * as ordersAction from '../../store/actions/orders';
 
 const CartScreen = () => {
 
@@ -12,8 +13,7 @@ const CartScreen = () => {
 
     const totalAmount = useSelector(state=>state.cart.totalAmount);
     const cartItems = useSelector(state=>state.cart.items);
-
-    console.log(cartItems);
+    const orders = useSelector(state=>state.orders.orders);
 
     const cartItemArray = [];
 
@@ -46,7 +46,7 @@ const CartScreen = () => {
             <Card>
                 <View style={styles.summary}>
                     <Text style={styles.summaryText}>Total: <Text style={styles.summaryTotal}>$ {totalAmount.toFixed(2)}</Text></Text>
-                    <Button title='Order Now' disabled={cartItemArray.length === 0} color={Colors.accent}/>
+                    <Button title='Order Now' disabled={cartItemArray.length === 0} color={Colors.accent} onPress={()=>{dispatch(ordersAction.addOrder(cartItemArray, totalAmount))}}/>
                 </View>
             </Card>
             <View style={styles.cartItems}>

@@ -8,11 +8,13 @@ import AppLoading from 'expo-app-loading';
 
 import productReducer from './store/reducers/products'
 import cartReducer from './store/reducers/cart';
+import OrdersReducer from './store/reducers/orders';
 import ShopNavigator from './navigation/ShopNavigator';
 
 const rootReducer = combineReducers({
   products: productReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  orders: OrdersReducer
 });
 
 const store = createStore(rootReducer);
