@@ -9,7 +9,7 @@ import AppLoading from 'expo-app-loading';
 import productReducer from './store/reducers/products'
 import cartReducer from './store/reducers/cart';
 import OrdersReducer from './store/reducers/orders';
-import ShopNavigator from './navigation/ShopNavigator';
+import MainNavigator from './navigation/ShopNavigator';
 
 const rootReducer = combineReducers({
   products: productReducer,
@@ -44,7 +44,7 @@ const [fontLoaded, setFontLoaded] = useState(false);
 
   return (
     <Provider store={store}>
-        <ShopNavigator/>
+        <MainNavigator/>
     </Provider>
 
   );
