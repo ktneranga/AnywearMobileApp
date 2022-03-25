@@ -9,9 +9,11 @@ import ProductOverViewScreen from '../screens/shop/ProductOverViewScreen';
 import ProductDetailsScreen from '../screens/shop/ProductDetailsScreen';
 import CartScreen from '../screens/shop/CartScreen';
 import OrdersScreen from '../screens/shop/OrdersScreen';
+import UserProductScreen from '../screens/user/UserProductScreen';
+
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../components/shop/UI/HeaderButton';
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -110,6 +112,40 @@ const OrderNavigator = (props) => {
     );
 }
 
+const UserNavigator = (props) => {
+    return(
+        <Stack.Navigator>
+            <Stack.Screen
+                name='UserProductScreen'
+                component={UserProductScreen}
+                options={{ 
+                    title: 'User Products',
+                    headerStyle: {
+                        backgroundColor: Platform.OS === 'android'? Colors.primary: ''
+                    },
+                    headerTintColor: Platform.OS === 'android'? 'white': Colors.primary,
+                    headerTitleStyle: {
+                        fontFamily: 'open-sans-bold'
+                    },
+                    headerLeft: ()=> {
+                        return(
+                        <HeaderButtons
+                            HeaderButtonComponent={HeaderButton}
+                        >
+                            <Item
+                                name='menu'
+                                iconName='ios-menu'
+                                onPress={()=>{props.navigation.toggleDrawer();}}
+                            />
+                        </HeaderButtons>
+                        );
+                    }
+                 }}
+            />
+        </Stack.Navigator>
+    );
+}
+
 const MainNavigator = () => {
     return(
         <NavigationContainer>
@@ -124,6 +160,10 @@ const MainNavigator = () => {
                 <Drawer.Screen
                     name='Orders'
                     component={OrderNavigator}
+                />
+                <Drawer.Screen
+                    name='Admin'
+                    component={UserNavigator}
                 />
             </Drawer.Navigator>
         </NavigationContainer>
