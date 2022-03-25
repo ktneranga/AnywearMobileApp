@@ -28,7 +28,7 @@ const CartScreen = () => {
         });
     }
 
-    console.log(cartItemArray);
+    // console.log(cartItemArray);
 
     const renderItem = (itemData) => {
         return(
