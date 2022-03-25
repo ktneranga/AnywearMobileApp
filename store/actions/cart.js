@@ -9,3 +9,7 @@ export const addToCart =(product) => {
 export const removeFromCart = (productId) => {
     return {type: REMOVE_FROM_CART, pid: productId}
 }
+
+export const clearCart = () => {
+    return {type: CLEAR_CART}
+}

@@ -36,6 +36,7 @@ const CartScreen = () => {
                 qty={itemData.item.quantity}
                 title={itemData.item.productTitle}
                 amount={itemData.item.sum}
+                deletable={true}
                 onRemove={()=>{dispatch(cartActions.removeFromCart(itemData.item.pid))}}
             />
         )

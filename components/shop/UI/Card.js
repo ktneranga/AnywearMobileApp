@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
         shadowRadius: 6,
         shadowOpacity: 0.26,
         elevation: 8,
-        padding: 20,
-        borderRadius: 10,
+        padding: 20,  
+        borderRadius: 10,    
         backgroundColor: 'white',
     }
 });

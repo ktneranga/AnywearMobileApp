@@ -11,6 +11,7 @@ import CartScreen from '../screens/shop/CartScreen';
 import OrdersScreen from '../screens/shop/OrdersScreen';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../components/shop/UI/HeaderButton';
+import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -116,6 +117,9 @@ const MainNavigator = () => {
                 <Drawer.Screen
                     name='Shop'
                     component={ShopNavigator}
+                    options={{ 
+                        activeTintColor: Colors.accent
+                     }}
                 />
                 <Drawer.Screen
                     name='Orders'
