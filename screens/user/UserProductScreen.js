@@ -1,10 +1,13 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, FlatList} from 'react-native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProductItem from '../../components/shop/ProductItem';
+import * as ProductAction from '../../store/actions/products';
 
 const UserProductScreen = () => {
     const products = useSelector(state=> state.products.userProducts);
+
+    const dispatch = useDispatch();
 
     const renderItem = (itemData)=> {
         return(
@@ -14,7 +17,18 @@ const UserProductScreen = () => {
                 price={itemData.item.price}
                 onViewDetail={()=>{}}
                 onAddToCart={()=>{}}
-            />
+            >
+                <Button
+                    color={Colors.primary}
+                    title="Edit"
+                    onPress={()=>{}}
+                />
+                <Button
+                    color={Colors.primary}
+                    title="Delete"
+                    onPress={()=>{dispatch(ProductAction.deleteProduct(itemData.item.pid))}}
+                />
+            </ProductItem>
         )
     }
 

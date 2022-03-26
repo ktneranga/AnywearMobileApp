@@ -23,7 +23,7 @@ const ProductItem = (props) => {
                     <Text style={styles.price}>$ {props.price}</Text>
                 </View>
                 <View style={styles.action}>
-                    <Button
+                    {/* <Button
                         color={Colors.primary}
                         title="View Details"
                         onPress={props.onViewDetail}
@@ -32,7 +32,8 @@ const ProductItem = (props) => {
                         color={Colors.primary}
                         title="Add to Cart"
                         onPress={props.onAddToCart}
-                    />
+                    /> */}
+                    {props.children}
                 </View>
             </View>
             </TouchableCmp>

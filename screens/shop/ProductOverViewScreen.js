@@ -1,5 +1,5 @@
 import React, {useLayoutEffect} from 'react';
-import {View,Text,FlatList, StyleSheet} from 'react-native'
+import {View,Text,FlatList, StyleSheet, Button} from 'react-native'
 import {useSelector, useDispatch} from 'react-redux'
 import ProductItem from '../../components/shop/ProductItem';
 import * as cartActions from '../../store/actions/cart'
@@ -19,11 +19,20 @@ const ProductOverViewScreen = (props) => {
                 title={itemData.item.title}
                 image={itemData.item.imageUrl}
                 price={itemData.item.price}
-                onViewDetail={()=>{props.navigation.navigate('ProductDetailsScreen',{
-                    productId: itemData.item.pid
-                })}}
-                onAddToCart={()=>{dispatch(cartActions.addToCart(itemData.item))}}
-            />
+            >
+                <Button
+                    color={Colors.primary}
+                    title="View Details"
+                    onPress={()=>{props.navigation.navigate('ProductDetailsScreen',{
+                        productId: itemData.item.pid
+                    })}}
+                />
+                <Button
+                    color={Colors.primary}
+                    title="Add to Cart"
+                    onPress={()=>{dispatch(cartActions.addToCart(itemData.item))}}
+                /> 
+            </ProductItem>
         )
     }  
     

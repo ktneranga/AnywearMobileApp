@@ -3,6 +3,7 @@ import { REMOVE_FROM_CART } from '../actions/cart';
 import { CLEAR_CART } from '../actions/cart' ;
 import { ADD_ORDERS } from '../actions/orders';
 import CartItem from '../../models/cart-item';
+import { DELETE_PRODUCT } from '../actions/products';
 
 const initialState = {
     items: {},
@@ -51,17 +52,31 @@ const cartReducer = (state=initialState, action) => {
                 }
             }else{
                 const updatedCartItems = {...state.items};
+                const itemTotal = state.items[action.pid].sum;
                 delete updatedCartItems[action.pid];
 
                 return{
                     ...state,
                     items: updatedCartItems,
-                    totalAmount: state.totalAmount - selectedItem.productPrice
+                    totalAmount: state.totalAmount - itemTotal
                 }
             }
 
         case ADD_ORDERS:
             return initialState; // because initial state is empty
+
+        case DELETE_PRODUCT:
+            if(!state.items[action.pid]){
+                return state;
+            }
+            const updatedCartItems = {...state.items};
+            const itemTotal = state.items[action.pid].sum;
+            delete updatedCartItems[action.pid];
+            return {
+                ...state,
+                items: updatedCartItems,
+                totalAmount: state.totalAmount - itemTotal
+            }
 
         default:
             return state
