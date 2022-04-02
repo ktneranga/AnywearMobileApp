@@ -46,7 +46,7 @@ const CartScreen = () => {
         <View style={styles.screen}>
             <Card>
                 <View style={styles.summary}>
-                    <Text style={styles.summaryText}>Total: <Text style={styles.summaryTotal}>$ {totalAmount.toFixed(2)}</Text></Text>
+                    <Text style={styles.summaryText}>Total: <Text style={styles.summaryTotal}>$ {Math.round(totalAmount.toFixed(2)*100)/100}</Text></Text>
                     <Button title='Order Now' disabled={cartItemArray.length === 0} color={Colors.accent} onPress={()=>{dispatch(ordersAction.addOrder(cartItemArray, totalAmount))}}/>
                 </View>
             </Card>

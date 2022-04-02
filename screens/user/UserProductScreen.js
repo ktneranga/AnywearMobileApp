@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProductItem from '../../components/shop/ProductItem';
 import * as ProductAction from '../../store/actions/products';
 
-const UserProductScreen = () => {
+const UserProductScreen = (props) => {
     const products = useSelector(state=> state.products.userProducts);
 
     const dispatch = useDispatch();
@@ -21,7 +21,9 @@ const UserProductScreen = () => {
                 <Button
                     color={Colors.primary}
                     title="Edit"
-                    onPress={()=>{}}
+                    onPress={()=>{props.navigation.navigate('EditProductScreen', {
+                        title: itemData.item.title
+                    } )}}
                 />
                 <Button
                     color={Colors.primary}

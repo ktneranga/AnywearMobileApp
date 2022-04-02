@@ -10,6 +10,7 @@ import ProductDetailsScreen from '../screens/shop/ProductDetailsScreen';
 import CartScreen from '../screens/shop/CartScreen';
 import OrdersScreen from '../screens/shop/OrdersScreen';
 import UserProductScreen from '../screens/user/UserProductScreen';
+import EditProductScreen from '../screens/user/EditProductScreen';
 
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../components/shop/UI/HeaderButton';
@@ -139,6 +140,19 @@ const UserNavigator = (props) => {
                             />
                         </HeaderButtons>
                         );
+                    }
+                 }}
+            />
+            <Stack.Screen
+                name='EditProductScreen'
+                component={EditProductScreen}
+                options={{ 
+                    headerStyle: {
+                        backgroundColor: Platform.OS === 'android'? Colors.primary: ''
+                    },
+                    headerTintColor: Platform.OS === 'android'? 'white': Colors.primary,
+                    headerTitleStyle: {
+                        fontFamily: 'open-sans-bold'
                     }
                  }}
             />
